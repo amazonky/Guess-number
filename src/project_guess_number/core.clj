@@ -32,10 +32,10 @@
                                    (recur new-attempts game-data))
                 :else (do
                         (let [end-time (System/currentTimeMillis)
-                              elapsed-time (- end-time start-time)]
+                              elapsed-time (/ (- end-time start-time) 1000.0)]
                           (println "Congratulations," player-name "! You guessed the number in" new-attempts "attempts!")
-                          (println "Elapsed time:", elapsed-time "milliseconds")
-                          (let [updated-game-data (assoc game-data :attempts new-attempts
-                                                         :elapsed-time-milliseconds elapsed-time)]
-                            (println "Game Over!")
-                            (println "Game data:", updated-game-data))))))))))))
+                          (let [updated-game-data (assoc game-data
+                                                         :attempts new-attempts
+                                                         :elapsed-time-seconds elapsed-time)]
+
+                            (print "Name: " player-name " Attempts: " new-attempts " Elapsed time (seconds): " elapsed-time " --- Play again beat your previous time! :)---"))))))))))))
